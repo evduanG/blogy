@@ -134,4 +134,24 @@ class PostController extends Controller
 
         return redirect('/posts/index')->with('deleted', 'Post Deleted Successfully');
     }
+
+    public function editPost($id)
+    {
+        $single = PostModele::find($id);
+        $categories = Category::all();
+
+        return view('posts.edit-post', compact('single', "categories"));
+    }
+
+    public function updatePost(Request $request, $id)
+    {
+        $updatePost = PostModele::find($id);
+        if ($updatePost && Auth::user()->id == $updatePost->user_id) {
+            $updatePost->update($request->all());
+
+            if ($updatePost) {
+                return redirect('/posts/single/' . $updatePost->id . '')->with('update', 'Post Update Successfully');
+            }
+        }
+    }
 }

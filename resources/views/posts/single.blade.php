@@ -39,14 +39,21 @@
 
                     @auth
                         @if (Auth::user()->id == $single->user_id)
-                            <form action="{{ route('post.delete', $single->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <div class="d-flex flex-row">
+                                <form action="{{ route('post.delete', $single->id) }}" method="POST" class="mx-2">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                                <a class="btn btn-warning mx-2" href="{{ route('post.edit', $single->id) }}">Edit</a>
+                            </div>
                         @endif
                     @endauth
-
+                    @if (\Session::has('update'))
+                        <div class="alert alert-success">
+                            <p>{!! \Session::get('update') !!}</p>
+                        </div>
+                    @endif
                     @if (\Session::has('success'))
                         <div class="alert alert-success">
                             <p>{!! \Session::get('success') !!}</p>

@@ -4,21 +4,23 @@
     <div class="container">
 
         <div class="comment-form-wrap pt-5">
-            <h3 class="mb-5">Create a New Post</h3>
+            <h3 class="mb-5">Update Post</h3>
             @if (\Session::has('success'))
                 <div class="alert alert-success">
                     <p>{!! \Session::get('success') !!}</p>
                 </div>
             @endif
-            <form action="{{ route('post.store') }}" method="POST" class="p-5 bg-light" enctype="multipart/form-data">
+            <form action="{{ route('post.update', $single->id) }}" method="POST" class="p-5 bg-light"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" placeholder="title" name="title" class="form-control" id="title">
+                    <input type="text" placeholder="title" name="title" value="{{ $single->title }}"
+                        class="form-control" id="title">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea placeholder="description" name="description" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea placeholder="description" name="description" cols="30" rows="10" class="form-control">{{ $single->description }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
@@ -32,20 +34,15 @@
 
 
                 <div class="form-group">
-                    <input type="hidden" name="user_id" class="form-control">
+                    <input type="hidden" name="user_id" value="{{ $single->user_id }}" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="user_name" class="btn btn-primary">
+                    <input type="hidden" name="user_name" value="{{ $single->user_name }}" class="btn btn-primary">
                 </div>
 
-
-                <div class="form-group">
-                    <label for="image">Image</label>
-                    <input type="file" name="image" class="form-control">
-                </div>
                 @auth
                     <div class="form-group">
-                        <input type="submit" name="submit" value="Post Comment" class="btn btn-primary">
+                        <input type="submit" name="submit" value="Upddate Comment" class="btn btn-primary">
                     </div>
                 @endauth
 

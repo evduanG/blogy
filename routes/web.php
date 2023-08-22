@@ -27,3 +27,7 @@ Route::post('/posts/comment-store', [App\Http\Controllers\posts\PostController::
 Route::get('/posts/create-post', [App\Http\Controllers\posts\PostController::class, 'createPost'])->name('post.create');
 Route::post('/posts/post-store', [App\Http\Controllers\posts\PostController::class, 'storePost'])->name('post.store');
 Route::delete('/posts/post-delete/{id}', [App\Http\Controllers\posts\PostController::class, 'deletePost'])->name('post.delete');
+
+// update
+Route::get('/posts/post-edit/{id}', [App\Http\Controllers\posts\PostController::class, 'editPost'])->name('post.edit');
+Route::post('/posts/post-update/{id}', [App\Http\Controllers\posts\PostController::class, 'updatePost'])->name('post.update');
