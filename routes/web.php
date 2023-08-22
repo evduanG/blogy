@@ -24,3 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/posts/index', [App\Http\Controllers\posts\PostController::class, 'index'])->name('post.index');
 Route::get('/posts/single/{id}', [App\Http\Controllers\posts\PostController::class, 'single'])->name('post.single');
 Route::post('/posts/comment-store', [App\Http\Controllers\posts\PostController::class, 'storeComment'])->name('comment.store');
+Route::get('/posts/create-post', [App\Http\Controllers\posts\PostController::class, 'createPost'])->name('post.create');
+Route::post('/posts/post-store', [App\Http\Controllers\posts\PostController::class, 'storePost'])->name('post.store');

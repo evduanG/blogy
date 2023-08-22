@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\posts\PostModele;
 use App\Models\posts\Comment;
+use App\Models\posts\Category;
+
 
 use App\Models\User;
 
@@ -100,5 +102,30 @@ class PostController extends Controller
         ]);
 
         return redirect('/posts/single/' . $request->post_id . '')->with('success', 'Comment Inserted Successfully');
+    }
+
+    public function createPost()
+    {
+
+        $categories = Category::all();
+        return view('posts/create-post', compact('categories'));
+    }
+
+    public function storePost(Request $request)
+    {
+        $destinationPath = 'assets/images/';
+        $myimage = $request->image->getClientOriginalName();
+        $request->image->move(public_path($destinationPath), $myimage);
+
+        $insertPost = PostModele::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category' => $request->category,
+            'user_id' => Auth::user()->id,
+            'user_name' => Auth::user()->name,
+            'image' => $myimage
+        ]);
+
+        return redirect('/posts/create-post')->with('success', 'Comment Inserted Successfully');
     }
 }

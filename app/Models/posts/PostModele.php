@@ -13,10 +13,12 @@ class PostModele extends Model
     protected $fillable = [
         "id",
         "title",
+        "image",
         "description",
         "category",
         "user_id",
         "user_name",
         "created_at"
     ];
+    public $timestamps = false;
 }

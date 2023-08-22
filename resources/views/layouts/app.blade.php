@@ -66,6 +66,7 @@
                                     <li><a href="category.html">Culture</a></li>
                                     <li><a href="category.html">Business</a></li>
                                     <li><a href="category.html">Politics</a></li>
+                                    <li><a href="{{ route('post.create') }}">Create Posts</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
                                     <li><a href="about.html">About Us</a></li>
                                     <!-- Authentication Links -->
