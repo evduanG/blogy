@@ -37,6 +37,16 @@
                         <p>Categories: <a href="#">{{ $single->category }}</a></p>
                     </div>
 
+                    @auth
+                        @if (Auth::user()->id == $single->user_id)
+                            <form action="{{ route('post.delete', $single->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        @endif
+                    @endauth
+
                     @if (\Session::has('success'))
                         <div class="alert alert-success">
                             <p>{!! \Session::get('success') !!}</p>

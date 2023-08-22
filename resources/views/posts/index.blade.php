@@ -4,6 +4,11 @@
     <!-- Start retroy layout blog posts -->
     <section class="section bg-light">
         <div class="container">
+            @if (\Session::has('deleted'))
+                <div class="alert alert-success">
+                    <p>{!! \Session::get('deleted') !!}</p>
+                </div>
+            @endif
             <div class="row align-items-stretch retro-layout">
                 <div class="col-md-4">
                     @foreach ($posts as $post)

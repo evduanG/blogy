@@ -106,7 +106,6 @@ class PostController extends Controller
 
     public function createPost()
     {
-
         $categories = Category::all();
         return view('posts/create-post', compact('categories'));
     }
@@ -127,5 +126,12 @@ class PostController extends Controller
         ]);
 
         return redirect('/posts/create-post')->with('success', 'Comment Inserted Successfully');
+    }
+
+    public function deletePost($id)
+    {
+        $deletePost = PostModele::where('id', $id)->delete();
+
+        return redirect('/posts/index')->with('deleted', 'Post Deleted Successfully');
     }
 }
