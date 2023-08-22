@@ -20,10 +20,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('assets/fonts/icomoon/style.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/flaticon/font/flaticon.css ')}}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/flaticon/font/flaticon.css ') }}">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
+    </script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
@@ -49,7 +51,8 @@
                     <div class="site-navigation">
                         <div class="row g-0 align-items-center">
                             <div class="col-2">
-                                <a href="{{ url('/') }}" class="logo m-0 float-start">Blogy<span class="text-primary">.</span></a>
+                                <a href="{{ url('/') }}" class="logo m-0 float-start">Blogy<span
+                                        class="text-primary">.</span></a>
                             </div>
                             <div class="col-8 text-center">
                                 <form action="#" class="search-form d-inline-block d-lg-none">
@@ -67,37 +70,41 @@
                                     <li><a href="about.html">About Us</a></li>
                                     <!-- Authentication Links -->
                                     @guest
-                                    @if (Route::has('login'))
-                                    <li><a href="{{ route('login') }}">Login</a></li>
-                                    @endif
+                                        @if (Route::has('login'))
+                                            <li><a href="{{ route('login') }}">Login</a></li>
+                                        @endif
 
-                                    @if (Route::has('register'))
-                                    <li><a href="{{ route('register') }}">Register</a></li>
-                                    @endif
-
+                                        @if (Route::has('register'))
+                                            <li><a href="{{ route('register') }}">Register</a></li>
+                                        @endif
                                     @else
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
-                                        </a>
-
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
+                                        <li class="nav-item dropdown">
+                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                                role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false" v-pre>
+                                                {{ Auth::user()->name }}
                                             </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                    </li>
+                                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                    class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </div>
+                                        </li>
                                     @endguest
                                 </ul>
 
                             </div>
                             <div class="col-2 text-end">
-                                <a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
+                                <a href="#"
+                                    class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
                                     <span></span>
                                 </a>
                                 <form action="#" class="search-form d-none d-lg-inline-block">
@@ -110,7 +117,7 @@
                 </div>
             </div>
         </nav>
-        </nav> -->
+        </nav>
 
         <main class="py-4">
             @yield('content')
@@ -122,7 +129,8 @@
                 <div class="col-lg-4">
                     <div class="widget">
                         <h3 class="mb-4">About</h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                            there live the blind texts.</p>
                     </div> <!-- /.widget -->
                     <div class="widget">
                         <h3>Social</h3>
@@ -205,16 +213,18 @@
 
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <!-- 
-              **==========
-              NOTE: 
-              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
-              **==========
-            -->
+                    <!-- **==========
+              NOTE:
+              Please don't remove this copyright link unless you buy the license here https://untree.co/license/
+              **========== -->
 
-                    <p>Copyright &copy;<script>
+                    <p>Copyright &copy;
+                        <script>
                             document.write(new Date().getFullYear());
-                        </script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a> <!-- License information: https://untree.co/license/ -->
+                        </script>. All Rights Reserved. &mdash; Designed with love by <a
+                            href="https://untree.co">Untree.co</a> Distributed by <a
+                            href="https://themewagon.com">ThemeWagon</a>
+                        <!-- License information: https://untree.co/license/ -->
                     </p>
                 </div>
             </div>
