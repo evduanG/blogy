@@ -5,8 +5,14 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                    @if (\Session::has('update'))
+                        <div class="alert alert-success">
+                            <p>{!! \Session::get('update') !!}</p>
+                        </div>
+                    @endif
                     <h5 class="card-title mb-4 d-inline">Admins</h5>
-                    <a href="create-admins.html" class="btn btn-primary mb-4 text-center float-right">Create Admins</a>
+                    <a href="{{ route('admins.create') }}" class="btn btn-primary mb-4 text-center float-right">Create
+                        Admins</a>
                     <table class="table">
                         <thead>
                             <tr>
