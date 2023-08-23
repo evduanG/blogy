@@ -92,14 +92,24 @@ class PostController extends Controller
 
     public function storeComment(Request $request)
     {
-        $insertComment = Comment::create([
-            'comment' => $request->comment,
-            'user_id' => Auth::user()->id,
-            'user_name' => Auth::user()->name,
-            'post_id' => $request->post_id,
-        ]);
+        if (Auth::check()) {
+            Request()->validate([
+                'comment' => 'required|max:300',
+                'email' => 'required',
+                'post_id' => 'required',
+            ]);
 
-        return redirect('/posts/single/' . $request->post_id . '')->with('success', 'Comment Inserted Successfully');
+            $insertComment = Comment::create([
+                'comment' => $request->comment,
+                'user_id' => Auth::user()->id,
+                'user_name' => Auth::user()->name,
+                'post_id' => $request->post_id,
+            ]);
+
+            return redirect('/posts/single/' . $request->post_id . '')->with('success', 'Comment Inserted Successfully');
+        } else {
+            return redirect('/posts/single/' . $request->post_id . '');
+        }
     }
 
     public function createPost()
@@ -113,20 +123,30 @@ class PostController extends Controller
 
     public function storePost(Request $request)
     {
-        $destinationPath = 'assets/images/';
-        $myimage = $request->image->getClientOriginalName();
-        $request->image->move(public_path($destinationPath), $myimage);
+        if (Auth::check()) {
+            Request()->validate([
+                'title' => 'required|max:150',
+                'description' => 'required|max:900',
+                'category' => 'required',
+                'image' => 'required',
+            ]);
+            $destinationPath = 'assets/images/';
+            $myimage = $request->image->getClientOriginalName();
+            $request->image->move(public_path($destinationPath), $myimage);
 
-        $insertPost = PostModele::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'category' => $request->category,
-            'user_id' => Auth::user()->id,
-            'user_name' => Auth::user()->name,
-            'image' => $myimage
-        ]);
+            $insertPost = PostModele::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'category' => $request->category,
+                'user_id' => Auth::user()->id,
+                'user_name' => Auth::user()->name,
+                'image' => $myimage
+            ]);
 
-        return redirect('/posts/create-post')->with('success', 'Comment Inserted Successfully');
+            return redirect('/posts/create-post')->with('success', 'Comment Inserted Successfully');
+        } else {
+            return redirect('/posts/index/');
+        }
     }
 
     public function deletePost($id)
@@ -152,7 +172,11 @@ class PostController extends Controller
         $updatePost = PostModele::find($id);
         if ($updatePost && Auth::user()->id == $updatePost->user_id) {
             $updatePost->update($request->all());
-
+            Request()->validate([
+                'title' => 'required|max:150',
+                'description' => 'required|max:900',
+                'category' => 'required',
+            ]);
             if ($updatePost) {
                 return redirect('/posts/single/' . $updatePost->id . '')->with('update', 'Post Update Successfully');
             }

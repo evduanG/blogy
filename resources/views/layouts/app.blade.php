@@ -44,7 +44,6 @@
 
 <body>
     <div id="app">
-
         <nav class="site-nav">
             <div class="container">
                 <div class="menu-bg-wrap">
@@ -99,6 +98,10 @@
                                                 <a class="dropdown-item"
                                                     href="{{ route('users.edit', Auth::user()->id) }}">
                                                     Update Porfile
+                                                </a>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('users.profile', Auth::user()->id) }}">
+                                                    Public Porfile
                                                 </a>
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"

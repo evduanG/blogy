@@ -18,17 +18,32 @@
                     <label for="email">Email</label>
                     <input type="email" placeholder="email" name="email" value="{{ $user->email }}"
                         class="form-control" id="email">
+                    @error('email')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 {{-- name --}}
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" placeholder="name" name="name" value="{{ $user->name }}" class="form-control"
                         id="name">
+                    @error('name')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 {{-- bio --}}
                 <div class="form-group">
                     <label for="bio">Bio</label>
                     <textarea placeholder="bio" name="bio" cols="30" rows="10" class="form-control">{{ $user->bio }}</textarea>
+                    @error('bio')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <div class="post-meta align-items-center text-center">
@@ -42,16 +57,6 @@
                         <input type="file" name="image" class="form-control">
                     </div>
                 </div>
-                {{-- <div class="form-group">
-                    <label for="category">Category</label>
-                    <select name="category" class="form-select" aria-label="Default select example">
-                        <option selected>Categories</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->name }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                </div> --}}
-
 
                 <div class="form-group">
                     <input type="hidden" name="id" value="{{ $user->id }}" class="form-control">

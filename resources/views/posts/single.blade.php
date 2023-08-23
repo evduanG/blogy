@@ -124,7 +124,8 @@
                             <div class="bio-body">
                                 <h2>{{ $user->name }}</h2>
                                 <p class="mb-4">{{ $user->bio }}</p>
-                                <p><a href="#" class="btn btn-primary btn-sm rounded px-2 py-2">Read my bio</a></p>
+                                <p><a href="{{ route('users.profile', $user->id) }}"
+                                        class="btn btn-primary btn-sm rounded px-2 py-2">Read my bio</a></p>
                                 <p class="social">
                                     <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
                                     <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
@@ -141,7 +142,7 @@
                             <ul>
                                 @foreach ($pupPost as $post)
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('post.single', $post->id) }}">
                                             <img src="{{ asset('assets/images/' . $post->image . '') }}"
                                                 class="me-4 rounded">
                                             <div class="text">

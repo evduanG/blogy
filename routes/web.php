@@ -40,6 +40,7 @@ Route::group(['prefix' => 'categories'], function () {
 });
 
 Route::group(['prefix' => 'users'], function () {
-    Route::get('/edit/{id}', [App\Http\Controllers\Users\UsersController::class, 'editPrifile'])->name('users.edit');
+    Route::get('/edit/{id}', [App\Http\Controllers\Users\UsersController::class, 'editProfile'])->name('users.edit');
     Route::any('/update/{id}', [App\Http\Controllers\Users\UsersController::class, 'updateProfile'])->name('users.update');
+    Route::get('/profile/{id}', [App\Http\Controllers\Users\UsersController::class, 'profile'])->name('users.profile');
 });

@@ -17,10 +17,20 @@
                     <label for="title">Title</label>
                     <input type="text" placeholder="title" name="title" value="{{ $single->title }}"
                         class="form-control" id="title">
+                    @error('title')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea placeholder="description" name="description" cols="30" rows="10" class="form-control">{{ $single->description }}</textarea>
+                    @error('description')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
@@ -30,6 +40,11 @@
                             <option value="{{ $category->name }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
+                    @error('category')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
 
