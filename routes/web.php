@@ -46,3 +46,10 @@ Route::group(['prefix' => 'users'], function () {
     Route::any('/update/{id}', [App\Http\Controllers\Users\UsersController::class, 'updateProfile'])->name('users.update');
     Route::get('/profile/{id}', [App\Http\Controllers\Users\UsersController::class, 'profile'])->name('users.profile');
 });
+
+Route::get('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 'viewLogin'])->name('admin.login');
+Route::post('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 'checkLogin'])->name('admin.check.login');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'], function () {
+    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admins.dashboard');
+});
