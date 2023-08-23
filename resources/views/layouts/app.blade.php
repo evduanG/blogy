@@ -61,14 +61,18 @@
                                 </form>
 
                                 <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
-                                    <li class="active"><a href="index.html">Home</a></li>
+                                    <li class="active"><a href="{{ route('home') }}">Home</a></li>
+                                    @foreach (['Culture', 'Business', 'Politics'] as $category)
+                                        <li><a
+                                                href="{{ route('category.single', $category) }}">{{ $category }}</a>
+                                        </li>
+                                    @endforeach
+                                    @auth
+                                        <li><a href="{{ route('post.create') }}">Create Posts</a></li>
+                                    @endauth
 
-                                    <li><a href="category.html">Culture</a></li>
-                                    <li><a href="category.html">Business</a></li>
-                                    <li><a href="category.html">Politics</a></li>
-                                    <li><a href="{{ route('post.create') }}">Create Posts</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                                    <li><a href="{{ route('about') }}">About Us</a></li>
                                     <!-- Authentication Links -->
                                     @guest
                                         @if (Route::has('login'))
@@ -149,7 +153,7 @@
                     <div class="widget">
                         <h3 class="mb-4">Company</h3>
                         <ul class="list-unstyled float-start links">
-                            <li><a href="#">About us</a></li>
+                            <li><a href="{{ route('about') }}">About Us</a></li>
                             <li><a href="#">Services</a></li>
                             <li><a href="#">Vision</a></li>
                             <li><a href="#">Mission</a></li>

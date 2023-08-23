@@ -62,8 +62,6 @@ class PostController extends Controller
         ));
     }
 
-
-
     public function single($id)
     {
         $single = PostModele::find($id);
@@ -106,8 +104,11 @@ class PostController extends Controller
 
     public function createPost()
     {
-        $categories = Category::all();
-        return view('posts/create-post', compact('categories'));
+        if (auth()->user()) {
+            $categories = Category::all();
+            return view('posts/create-post', compact('categories'));
+        }
+        return abort('404');
     }
 
     public function storePost(Request $request)
@@ -139,8 +140,11 @@ class PostController extends Controller
     {
         $single = PostModele::find($id);
         $categories = Category::all();
-
-        return view('posts.edit-post', compact('single', "categories"));
+        if (Auth::user()->id == $single->user_id) {
+            return view('posts.edit-post', compact('single', "categories"));
+        } else {
+            return abort('404');
+        }
     }
 
     public function updatePost(Request $request, $id)
@@ -153,5 +157,17 @@ class PostController extends Controller
                 return redirect('/posts/single/' . $updatePost->id . '')->with('update', 'Post Update Successfully');
             }
         }
+        return abort('404');
+    }
+    public function contact()
+    {
+        return view('pages.contact');
+        // , compact('single', "categories"));
+    }
+
+    public function about()
+    {
+        return view('pages.about');
+        // , compact('single', "categories"));
     }
 }

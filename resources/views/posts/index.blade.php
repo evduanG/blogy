@@ -18,7 +18,7 @@
                                 style="background-image: url('{{ asset('assets/images/' . $post->image . '') }}');"></div>
 
                             <div class="text">
-                                <span class="date">{{ $post->created_at }}</span>
+                                <span class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                 <h2>{{ $post->title }}</h2>
                             </div>
                         </a>
@@ -26,15 +26,15 @@
                 </div>
 
                 <div class="col-md-4">
-                    @foreach ($postOne as $justPost)
-                        <a href="{{ route('post.single', $justPost->id) }}" class="h-entry img-5 h-100 gradient">
+                    @foreach ($postOne as $post)
+                        <a href="{{ route('post.single', $post->id) }}" class="h-entry img-5 h-100 gradient">
                             <div class="featured-img"
-                                style="background-image: url('{{ asset('assets/images/' . $justPost->image . '') }}');">
+                                style="background-image: url('{{ asset('assets/images/' . $post->image . '') }}');">
                             </div>
 
                             <div class="text">
-                                <span class="date">{{ $justPost->created_at }}</span>
-                                <h2>{{ $justPost->title }}</h2>
+                                <span class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
+                                <h2>{{ $post->title }}</h2>
                             </div>
                         </a>
                     @endforeach
@@ -49,7 +49,7 @@
                                 style="background-image: url('{{ asset('assets/images/' . $post->image . '') }}');"></div>
 
                             <div class="text">
-                                <span class="date">{{ $post->created_at }}</span>
+                                <span class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                 <h2>{{ $post->title }}</h2>
                             </div>
                         </a>
@@ -79,7 +79,8 @@
                                         <img src="{{ asset('assets/images/' . $post->image . '') }}" alt="Image"
                                             class="img-fluid">
                                     </a>
-                                    <span class="date">{{ $post->created_at }}</span>
+                                    <span
+                                        class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                     <h2><a href="{{ route('post.single', $post->id) }}"> {{ $post->title }}</a></h2>
                                     <p>{{ $post->description }}</p>
                                     <p><a href="{{ route('post.single', $post->id) }}"
@@ -93,7 +94,7 @@
                     <ul class="list-unstyled blog-entry-sm">
                         @foreach ($postsBusList as $post)
                             <li>
-                                <span class="date">{{ $post->created_at }}</span>
+                                <span class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                 <h3><a href="{{ route('post.single', $post->id) }}">{{ $post->title }}</a></h3>
                                 <p>{{ $post->description }}</p>
                                 <p><a href=""{{ route('post.single', $post->id) }}"" class="read-more">Continue
@@ -118,7 +119,7 @@
                                 <img src="{{ asset('assets/images/' . $post->image . '') }}" alt="Image"
                                     class="img-fluid">
                             </a>
-                            <span class="date">{{ $post->created_at }}</span>
+                            <span class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                             <h2><a
                                     href="{{ asset('assets/images/' . $post->image . '') }}">{{ substr($post->title, 0, 15) . '...' }}</a>
                             </h2>
@@ -151,7 +152,8 @@
                                         <img src="{{ asset('assets/images/' . $post->image . '') }}" alt="Image"
                                             class="img-fluid">
                                     </a>
-                                    <span class="date">{{ $post->created_at }}</span>
+                                    <span
+                                        class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                     <h2><a href="{{ route('post.single', $post->id) }}">{{ $post->title }}</a></h2>
                                     <p>{{ substr($post->description, 0, 35) . '...' }}</p>
                                     <p><a href="{{ route('post.single', $post->id) }}"
@@ -165,7 +167,7 @@
                     <ul class="list-unstyled blog-entry-sm">
                         @foreach ($postsCultureList as $post)
                             <li>
-                                <span class="date">{{ $post->created_at }}</span>
+                                <span class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                 <h3><a href="{{ route('post.single', $post->id) }}">{{ $post->title }}</a></h3>
                                 <p>{{ substr($post->description, 0, 35) . '...' }}</p>
                                 <p><a href="{{ route('post.single', $post->id) }}" class="read-more">Continue Reading</a>
@@ -205,7 +207,8 @@
                                             alt="Image" class="img-fluid"></figure> --}}
                                     <span class="d-inline-block mt-1">By <a
                                             href="#">{{ $post->user_name }}</a></span>
-                                    <span>&nbsp;-&nbsp; {{ $post->created_at }}</span>
+                                    <span>&nbsp;-&nbsp;
+                                        {{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                 </div>
 
                                 <p>{{ substr($post->description, 0, 35) . '...' }}</p>
@@ -252,7 +255,7 @@
                             <div class="featured-img"
                                 style="background-image: url('{{ asset('assets/images/' . $post->image . '') }}');"></div>
                             <div class="text text-sm">
-                                <span>{{ $post->created_at }}</span>
+                                <span>{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                 <h2>{{ substr($post->title, 0, 35) . '...' }}</h2>
                             </div>
                         </a>
@@ -265,7 +268,7 @@
                                     style="background-image: url('{{ asset('assets/images/' . $post->image . '') }}');">
                                 </div>
                                 <div class="text text-sm">
-                                    <span>{{ $post->created_at }}</span>
+                                    <span>{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                     <h2>{{ substr($post->title, 0, 35) . '...' }}</h2>
                                 </div>
                             </a>

@@ -13,7 +13,7 @@
                                     src="{{ asset('assets/user_images/' . $user->image . '') }}" alt="Image"
                                     class="img-fluid"></figure>
                             <span class="d-inline-block mt-1">{{ $user->name }}</span>
-                            <span>&nbsp;-&nbsp; {{ $single->created_at }}</span>
+                            <span>&nbsp;-&nbsp; {{ \Carbon\Carbon::parse($single->created_at)->format('M d,Y') }}</span>
                         </div>
                     </div>
                 </div>
@@ -39,13 +39,13 @@
 
                     @auth
                         @if (Auth::user()->id == $single->user_id)
-                            <div class="d-flex flex-row">
-                                <form action="{{ route('post.delete', $single->id) }}" method="POST" class="mx-2">
+                            <div class="d-flex flex-row justify-content-between">
+                                <form action="{{ route('post.delete', $single->id) }}" method="POST" class="m-2">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
-                                <a class="btn btn-warning mx-2" href="{{ route('post.edit', $single->id) }}">Edit</a>
+                                <a class="btn btn-warning m-2" href="{{ route('post.edit', $single->id) }}">Edit</a>
                             </div>
                         @endif
                     @endauth
@@ -70,7 +70,8 @@
                                     </div>
                                     <div class="comment-body">
                                         <h3>{{ $comment->user_name }}</h3>
-                                        <div class="meta">{{ $comment->created_at }}</div>
+                                        <div class="meta">
+                                            {{ \Carbon\Carbon::parse($comment->created_at)->format('M d,Y') }}</div>
                                         <p>{{ $comment->comment }}</p>
                                         <p><a href="#" class="reply rounded">Reply</a></p>
                                     </div>
@@ -144,7 +145,8 @@
                                             <div class="text">
                                                 <h4>{{ substr($post->title, 0, 35) . ' ...' }}</h4>
                                                 <div class="post-meta">
-                                                    <span class="mr-2">{{ $post->created_at }}</span>
+                                                    <span
+                                                        class="mr-2">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -187,7 +189,8 @@
                                     <img src="{{ asset('assets/images/' . $post->image . '') }}" alt="Image"
                                         class="img-fluid">
                                 </a>
-                                <span class="date">{{ $post->created_at }}</span>
+                                <span
+                                    class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                 <h2><a href="{{ route('post.single', $post->id) }}">{{ $post->title }}</a></h2>
                                 <p>{{ substr($post->title, 0, 25) . '...' }}</p>
                                 <p><a href=""{{ route('post.single', $post->id) }}"" class="read-more">Continue
