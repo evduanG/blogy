@@ -198,7 +198,7 @@
                                     class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                 <h2><a href="{{ route('post.single', $post->id) }}">{{ $post->title }}</a></h2>
                                 <p>{{ substr($post->title, 0, 25) . '...' }}</p>
-                                <p><a href=""{{ route('post.single', $post->id) }}"" class="read-more">Continue
+                                <p><a href="{{ route('post.single', $post->id) }}" class="read-more">Continue
                                         Reading</a></p>
                             </div>
                         </div>

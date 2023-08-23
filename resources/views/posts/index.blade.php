@@ -102,7 +102,7 @@
                                 <span class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}</span>
                                 <h3><a href="{{ route('post.single', $post->id) }}">{{ $post->title }}</a></h3>
                                 <p>{{ $post->description }}</p>
-                                <p><a href=""{{ route('post.single', $post->id) }}"" class="read-more">Continue
+                                <p><a href="{{ route('post.single', $post->id) }}" class="read-more">Continue
                                         Reading</a></p>
                             </li>
                         @endforeach

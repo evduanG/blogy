@@ -62,12 +62,16 @@ class PostController extends Controller
         ));
     }
 
+    private function pupPost($numOfPost = 3)
+    {
+        return PostModele::take(3)->orderBy('id', 'desc')->get();
+    }
+
     public function single($id)
     {
         $single = PostModele::find($id);
         $user = User::find($single->user_id);
-        $pupPost = PostModele::take(3)->orderBy('id', 'desc')->get();
-
+        $pupPost = $this->pupPost();
         // categories
         $categories = DB::table('categories as c')
             ->join('posts as p', 'p.category', '=', 'c.name')
@@ -186,12 +190,26 @@ class PostController extends Controller
     public function contact()
     {
         return view('pages.contact');
-        // , compact('single', "categories"));
     }
 
     public function about()
     {
         return view('pages.about');
-        // , compact('single', "categories"));
+    }
+
+    public function search(Request $request)
+    {
+        $search =  $request->get('search');
+        $results = PostModele::where('title', 'like', "%$search%")->get();
+        $pupPost = $this->pupPost();
+
+        $categories = DB::table('categories as c')
+            ->join('posts as p', 'p.category', '=', 'c.name')
+            ->groupBy('c.name')
+            ->selectRaw('COUNT(*) as total, c.name as name')
+            ->orderBy('total', 'desc')
+            ->get();
+
+        return view('posts.search', compact('results', 'search', 'pupPost', 'categories'));
     }
 }

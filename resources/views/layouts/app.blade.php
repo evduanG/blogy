@@ -119,8 +119,11 @@
                                     class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light">
                                     <span></span>
                                 </a>
-                                <form action="#" class="search-form d-none d-lg-inline-block">
-                                    <input type="text" class="form-control" placeholder="Search...">
+                                <form action="{{ route('post.search') }}" method="POST"
+                                    class="search-form d-none d-lg-inline-block">
+                                    @csrf
+
+                                    <input name="search" type="text" class="form-control" placeholder="Search...">
                                     <span class="bi-search"></span>
                                 </form>
                             </div>
@@ -183,7 +186,7 @@
                         <div class="post-entry-footer">
                             <ul>
                                 <li>
-                                    <a href="">
+                                    <a href="#">
                                         <img src="images/img_1_sq.jpg" alt="Image placeholder" class="me-4 rounded">
                                         <div class="text">
                                             <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
@@ -194,7 +197,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="#">
                                         <img src="images/img_2_sq.jpg" alt="Image placeholder" class="me-4 rounded">
                                         <div class="text">
                                             <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
@@ -205,7 +208,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="#">
                                         <img src="images/img_3_sq.jpg" alt="Image placeholder" class="me-4 rounded">
                                         <div class="text">
                                             <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>

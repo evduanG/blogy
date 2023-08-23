@@ -32,6 +32,8 @@ Route::group(['prefix' => 'posts'], function () {
     // update
     Route::get('/post-edit/{id}', [App\Http\Controllers\posts\PostController::class, 'editPost'])->name('post.edit');
     Route::post('/post-update/{id}', [App\Http\Controllers\posts\PostController::class, 'updatePost'])->name('post.update');
+
+    Route::any('/search', [App\Http\Controllers\posts\PostController::class, 'search'])->name('post.search');
 });
 
 

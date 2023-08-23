@@ -5,17 +5,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="heading">{{ 'Category: ' . $name }}</div>
+                    <div class="heading">{{ 'results for: ' . $search }}</div>
                 </div>
             </div>
             <div class="row posts-entry">
                 <div class="col-lg-8">
-                    @foreach ($posts as $post)
+                    @foreach ($results as $post)
                         <div class="blog-entry d-flex blog-entry-search-item">
                             <a href="{{ route('post.single', $post->id) }}" class="img-link me-4">
                                 <img src="{{ asset('assets/images/' . $post->image . '') }}" alt="Image"
                                     class="img-fluid">
                             </a>
+
                             <div>
                                 <span class="date">{{ \Carbon\Carbon::parse($post->created_at)->format('M d,Y') }}
                                     &bullet; <a
