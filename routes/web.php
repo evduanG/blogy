@@ -38,3 +38,8 @@ Route::group(['prefix' => 'posts'], function () {
 Route::group(['prefix' => 'categories'], function () {
     Route::get('/category/{name}', [App\Http\Controllers\categories\CategoryController::class, 'category'])->name('category.single');
 });
+
+Route::group(['prefix' => 'users'], function () {
+    Route::get('/edit/{id}', [App\Http\Controllers\Users\UsersController::class, 'editPrifile'])->name('users.edit');
+    Route::any('/update/{id}', [App\Http\Controllers\Users\UsersController::class, 'updateProfile'])->name('users.update');
+});

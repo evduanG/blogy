@@ -9,6 +9,11 @@
                     <p>{!! \Session::get('deleted') !!}</p>
                 </div>
             @endif
+            @if (\Session::has('update'))
+                <div class="alert alert-success">
+                    <p>{!! \Session::get('update') !!}</p>
+                </div>
+            @endif
             <div class="row align-items-stretch retro-layout">
                 <div class="col-md-4">
                     @foreach ($posts as $post)

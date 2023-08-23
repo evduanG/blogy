@@ -34,7 +34,9 @@
 
 
                     <div class="pt-5">
-                        <p>Categories: <a href="#">{{ $single->category }}</a></p>
+                        <p>Categories: <a
+                                href="{{ route('category.single', $single->category) }}">{{ $single->category }}</a>
+                        </p>
                     </div>
 
                     @auth
@@ -161,7 +163,9 @@
                         <h3 class="heading">Categories</h3>
                         <ul class="categories">
                             @foreach ($categories as $category)
-                                <li><a href="#">{{ $category->name }}<span>({{ $category->total }})</span></a></li>
+                                <li><a
+                                        href="{{ route('category.single', $category->name) }}">{{ $category->name }}<span>({{ $category->total }})</span></a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
