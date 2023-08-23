@@ -52,4 +52,5 @@ Route::post('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'], function () {
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admins.dashboard');
+    Route::get('/show-admins', [App\Http\Controllers\Admin\AdminController::class, 'showAdmins'])->name('admins.show');
 });

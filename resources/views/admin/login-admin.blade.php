@@ -13,17 +13,24 @@
                         <div class="form-outline mb-4">
                             <input type="email" name="email" id="form2Example1" class="form-control"
                                 placeholder="Email" />
-
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-
 
                         <!-- Password input -->
                         <div class="form-outline mb-4">
                             <input type="password" name="password" id="form2Example2" placeholder="Password"
                                 class="form-control" />
 
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-
 
 
                         <!-- Submit button -->

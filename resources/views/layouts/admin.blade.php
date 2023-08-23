@@ -29,12 +29,15 @@
                     @auth('admin')
                         <ul class="navbar-nav side-nav">
                             <li class="nav-item">
-                                <a class="nav-link text-white" style="margin-left: 20px;" href="index.html">Home
+                                <a class="nav-link text-white" style="margin-left: 20px;"
+                                    href="{{ route('admins.dashboard') }}">Home
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="admins/admins.html" style="margin-left: 20px;">Admins</a>
+                                <a class="nav-link" href="{{ route('admins.show') }}" style="margin-left: 20px;">Admins</a>
+
+                                {{-- <a class="nav-link" href="{{route('') admins/admins.html}}" style="margin-left: 20px;">Admins</a> --}}
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="categories-admins/show-categories.html"
@@ -44,14 +47,14 @@
                                 <a class="nav-link" href="posts-admins/show-posts.html" style="margin-left: 20px;">Posts</a>
                             </li>
                             <!--  <li class="nav-item">
-                <a class="nav-link" href="#" style="margin-left: 20px;">Comments</a>
-              </li> -->
+                            <a class="nav-link" href="#" style="margin-left: 20px;">Comments</a>
+                          </li> -->
                         </ul>
                     @endauth
 
                     <ul class="navbar-nav ml-md-auto d-md-flex">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home
+                            <a class="nav-link" href="{{ route('admins.dashboard') }}">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
