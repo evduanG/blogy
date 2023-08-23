@@ -11,7 +11,7 @@ class AdminController extends Controller
 
     public function viewLogin()
     {
-        if (isset(Auth::guard('admin')->user->name)) {
+        if (Auth::guard('admin')->check()) {
             return redirect()->route('admins.dashboard');
         }
         return view('admin.login-admin');
