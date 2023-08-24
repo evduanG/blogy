@@ -99,7 +99,6 @@ class PostController extends Controller
         if (Auth::check()) {
             Request()->validate([
                 'comment' => 'required|max:300',
-                'email' => 'required',
                 'post_id' => 'required',
             ]);
 
