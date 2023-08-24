@@ -52,7 +52,18 @@ Route::post('/admin/login', [App\Http\Controllers\Admin\AdminController::class, 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'], function () {
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admins.dashboard');
+
     Route::get('/show-admins', [App\Http\Controllers\Admin\AdminController::class, 'showAdmins'])->name('admins.show');
     Route::get('/create-admins', [App\Http\Controllers\Admin\AdminController::class, 'createAdmins'])->name('admins.create');
     Route::post('/create-admins', [App\Http\Controllers\Admin\AdminController::class, 'storeAdmins'])->name('admins.store');
+
+    Route::get('/show-categories', [App\Http\Controllers\Admin\AdminController::class, 'showCategories'])->name('categories.show');
+
+    Route::get('/update-categories/{id}', [App\Http\Controllers\Admin\AdminController::class, 'createUpdateCategories'])->name('categories.update');
+    Route::post('/update-categories/{id}', [App\Http\Controllers\Admin\AdminController::class, 'storeUpdateCategories'])->name('categories.store');
+
+    Route::get('/create-categories', [App\Http\Controllers\Admin\AdminController::class, 'createNewCategories'])->name('categories.create');
+    Route::post('/create-categories', [App\Http\Controllers\Admin\AdminController::class, 'storeNewCategories'])->name('categories.create-store');
+
+    Route::delete('/delete-category/{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteCategory'])->name('categories.delete');
 });

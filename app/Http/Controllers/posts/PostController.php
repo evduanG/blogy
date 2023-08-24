@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\posts;
 
-use App\Http\Controllers\Controller;
+use DB;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+
+use App\Models\User;
 use App\Models\posts\PostModele;
 use App\Models\posts\Comment;
 use App\Models\posts\Category;
 
-
-use App\Models\User;
-
-use DB;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -175,12 +175,12 @@ class PostController extends Controller
     {
         $updatePost = PostModele::find($id);
         if ($updatePost && Auth::user()->id == $updatePost->user_id) {
-            $updatePost->update($request->all());
             Request()->validate([
                 'title' => 'required|max:150',
                 'description' => 'required|max:900',
                 'category' => 'required',
             ]);
+            $updatePost->update($request->all());
             if ($updatePost) {
                 return redirect('/posts/single/' . $updatePost->id . '')->with('update', 'Post Update Successfully');
             }
