@@ -66,4 +66,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'], function () {
     Route::post('/create-categories', [App\Http\Controllers\Admin\AdminController::class, 'storeNewCategories'])->name('categories.create-store');
 
     Route::delete('/delete-category/{id}', [App\Http\Controllers\Admin\AdminController::class, 'deleteCategory'])->name('categories.delete');
+
+    Route::get('/posts-show', [App\Http\Controllers\Admin\AdminController::class, 'showPosts'])->name('posts.show');
 });

@@ -28,7 +28,7 @@
 
                     @auth('admin')
                         <ul class="navbar-nav side-nav">
-                            @foreach (['Home' => 'admins.dashboard', 'Admins' => 'admins.show', 'Categories' => 'categories.show', 'Posts' => 'admins.dashboard'] as $name => $link)
+                            @foreach (['Home' => 'admins.dashboard', 'Admins' => 'admins.show', 'Categories' => 'categories.show', 'Posts' => 'posts.show'] as $name => $link)
                                 <li class="nav-item">
                                     <a class="nav-link text-white" style="margin-left: 20px;"
                                         href="{{ route('' . $link . '') }}">{{ $name }}

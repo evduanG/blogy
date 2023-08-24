@@ -146,29 +146,12 @@ class AdminController extends Controller
     public function deleteCategory($id)
     {
         $id = Category::where('id', $id)->delete();
-        echo $id;
-        // $category = Category::find($id);
-        // $category->delete();
         return redirect('/admin/show-categories')->with('delete', 'Update Delete Successfully');
     }
 
-    public function storeCategories(Request $request)
+    public function showPosts()
     {
-        if (Auth::guard('admin')->check()) {
-            Request()->validate([
-                'name' => 'required|max:60',
-                'email' => 'required|max:60',
-                'password' => 'required|max:70',
-            ]);
-
-            $insertAdmin = Admin::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
-
-            return redirect('/admin/show-admins')->with('success', 'Create New Admin Successfully');
-        }
-        return abort(404);
+        $posts = PostModele::all();
+        return view('admin.show-posts', compact('posts'));
     }
 }

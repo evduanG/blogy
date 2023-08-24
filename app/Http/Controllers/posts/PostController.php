@@ -153,11 +153,17 @@ class PostController extends Controller
         }
     }
 
-    public function deletePost($id)
+    public function deletePost($id, $redirectTo = '/posts/index')
     {
-        $deletePost = PostModele::where('id', $id)->delete();
+        $post = PostModele::find($id);
 
-        return redirect('/posts/index')->with('deleted', 'Post Deleted Successfully');
+        // $deletePost = PostModele::where('id', $id)->delete();
+
+        $post->delete();
+        $file_path = public_path('assets/images/' . $post->image);
+        unlink($file_path);
+
+        return redirect($redirectTo)->with('deleted', 'Post Deleted Successfully');
     }
 
     public function editPost($id)
